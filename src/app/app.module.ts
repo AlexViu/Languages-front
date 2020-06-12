@@ -13,13 +13,19 @@ import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ContainerComponent } from './pages/container/container.component';
+import { LanguageComponent } from './pages/language/language.component';
+import { TranslateComponent } from './pages/translate/translate.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    ContainerComponent
+    ContainerComponent,
+    LanguageComponent,
+    TranslateComponent,
+
   ],
   imports: [
     BrowserAnimationsModule,
