@@ -1,56 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from "ngx-toastr";
 
-import { AppRoutingModule } from './app-routing.module';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { NavbarModule} from './shared/navbar/navbar.module';
+import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
+
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
-import { NavigationComponent } from './navigation/navigation.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { ContainerComponent } from './container/container.component';
-import { LanguageComponent } from './language/language.component';
-import { TranslateComponent } from './translate/translate.component';
-import { TableComponent } from './table/table.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
+import { AppRoutes } from './app.routing';
+
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ContainerComponent } from './pages/container/container.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    DashboardComponent,
-    ContainerComponent,
-    LanguageComponent,
-    TranslateComponent,
-    TableComponent
+    AdminLayoutComponent,
+    ContainerComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
+    RouterModule.forRoot(AppRoutes,{
+      useHash: true
+    }),
+    SidebarModule,
+    NavbarModule,
+    ToastrModule.forRoot(),
+    FooterModule,
+    FixedPluginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
