@@ -15,6 +15,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ContainerComponent } from './pages/container/container.component';
 import { LanguageComponent } from './pages/language/language.component';
 import { TranslateComponent } from './pages/translate/translate.component';
+import { ModalLanguageComponent } from './pages/language/modal-language/modal-language.component';
+
 
 
 
@@ -25,6 +27,8 @@ import { TranslateComponent } from './pages/translate/translate.component';
     ContainerComponent,
     LanguageComponent,
     TranslateComponent,
+    ModalLanguageComponent,
+
 
   ],
   imports: [

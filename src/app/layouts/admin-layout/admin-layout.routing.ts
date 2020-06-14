@@ -8,6 +8,9 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { NotificationsComponent } from '../../pages/notifications/notifications.component';
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
+import { ContainerComponent } from '../../pages/container/container.component';
+import { TranslateComponent } from '../../pages/translate/translate.component';
+import { LanguageComponent } from '../../pages/language/language.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -17,5 +20,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent }
+    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'container',  component: ContainerComponent },
+    { path: 'translate',  component: TranslateComponent },
+    { path: 'language',  component: LanguageComponent }
 ];

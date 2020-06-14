@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit{
               return this.listTitles[item].title;
           }
       }
-      return 'Dashboard';
+      return 'Translate';
     }
     sidebarToggle() {
         if (this.sidebarVisible === false) {
