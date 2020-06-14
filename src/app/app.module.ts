@@ -16,6 +16,8 @@ import { ContainerComponent } from './pages/container/container.component';
 import { LanguageComponent } from './pages/language/language.component';
 import { TranslateComponent } from './pages/translate/translate.component';
 import { ModalLanguageComponent } from './pages/language/modal-language/modal-language.component';
+import { ModalContainerComponent } from './pages/container/modal-container/modal-container.component';
+import { ModalTranslateComponent } from './pages/translate/modal-translate/modal-translate.component';
 
 
 
@@ -28,6 +30,8 @@ import { ModalLanguageComponent } from './pages/language/modal-language/modal-la
     LanguageComponent,
     TranslateComponent,
     ModalLanguageComponent,
+    ModalContainerComponent,
+    ModalTranslateComponent,
 
 
   ],

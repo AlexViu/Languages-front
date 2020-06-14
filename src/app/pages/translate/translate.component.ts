@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalTranslateComponent } from './modal-translate/modal-translate.component';
 
 @Component({
   selector: 'app-translate',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TranslateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  }
+
+  open() {
+    const modalRef = this.modalService.open(ModalTranslateComponent);
+    modalRef.componentInstance.name = 'World';
   }
 
 }
