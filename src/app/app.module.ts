@@ -18,8 +18,7 @@ import { TranslateComponent } from './pages/translate/translate.component';
 import { ModalLanguageComponent } from './pages/language/modal-language/modal-language.component';
 import { ModalContainerComponent } from './pages/container/modal-container/modal-container.component';
 import { ModalTranslateComponent } from './pages/translate/modal-translate/modal-translate.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +32,6 @@ import { ModalTranslateComponent } from './pages/translate/modal-translate/modal
     ModalContainerComponent,
     ModalTranslateComponent,
 
-
   ],
   imports: [
     BrowserAnimationsModule,
@@ -44,7 +42,8 @@ import { ModalTranslateComponent } from './pages/translate/modal-translate/modal
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

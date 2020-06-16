@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, NgModule} from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -9,13 +10,25 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalLanguageComponent implements OnInit {
 
-  @Input() name;
+  public name: String ;
+  public key: String ;
+  public errorMessage: String;
 
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
   }
 
+  save() {
+    this.errorMessage = null;
+    if(!this.name || !this.key) {
+      this.errorMessage = "Error procesando el formualario";
+      return;
+    }
+    
+    console.log("El nombre es:" + this.name);
+    console.log("La key es:" + this.key);
 
+  }
 
 }
