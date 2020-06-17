@@ -19,8 +19,12 @@ import { ModalLanguageComponent } from './pages/language/modal-language/modal-la
 import { ModalContainerComponent } from './pages/container/modal-container/modal-container.component';
 import { ModalTranslateComponent } from './pages/translate/modal-translate/modal-translate.component';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { TableLanguageComponent } from './pages/language/table-language/table-language.component';
 
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     ModalLanguageComponent,
     ModalContainerComponent,
     ModalTranslateComponent,
+    TableLanguageComponent,
 
   ],
   imports: [
@@ -43,7 +48,10 @@ import { FormsModule } from '@angular/forms';
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

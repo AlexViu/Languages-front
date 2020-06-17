@@ -1,8 +1,6 @@
 import { Component, OnInit, NgModule} from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-
-
 @Component({
   selector: 'app-modal-language',
   templateUrl: './modal-language.component.html',
