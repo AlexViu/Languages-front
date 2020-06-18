@@ -15,7 +15,9 @@ export class TableLanguageComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<TableLanguageItem>;
   dataSource: TableLanguageDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. 
+   * ng generate @angular/material:table pages/language/table-language
+  */
   displayedColumns = ['id', 'name'];
 
   ngOnInit() {

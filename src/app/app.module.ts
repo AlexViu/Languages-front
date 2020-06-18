@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TableLanguageComponent } from './pages/language/table-language/table-language.component';
+import {MatCardModule} from '@angular/material/card';
 
  
 @NgModule({
@@ -52,6 +53,7 @@ import { TableLanguageComponent } from './pages/language/table-language/table-la
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
