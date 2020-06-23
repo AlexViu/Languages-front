@@ -15,9 +15,4 @@ export class LanguageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  open() {
-    
-    const modalRef = this.modalService.open(ModalLanguageComponent);
-  }
 }

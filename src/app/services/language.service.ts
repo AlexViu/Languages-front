@@ -56,6 +56,13 @@ export class LanguageService {
       );
   }
 
+  deleteLanguage(languageid: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${AppSettings.API_URL}language/${languageid}`)
+      .pipe(
+        catchError(this.handleError('addHero', name))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

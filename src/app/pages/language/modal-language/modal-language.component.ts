@@ -15,9 +15,15 @@ export class ModalLanguageComponent implements OnInit {
   public languageId: number;
   public errorMessage: string;
 
-  constructor(public activeModal: NgbActiveModal, private languageService: LanguageService) {}
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
+  }
+
+  public initModal(language: TableLanguageItem) {
+    this.name = language.name;
+    this.key = language.langKey;
+    this.languageId = language.id;
   }
 
 
@@ -34,21 +40,8 @@ export class ModalLanguageComponent implements OnInit {
       name : this.name,
       langKey: this.key
     }
-  
-    if(this.languageId) {
-      this.languageService.editLanguage(language).subscribe((response) => {
-        console.log(response);
-        this.activeModal.close('Close click');
-      });
-    } else {
-      this.languageService.addLanguage(language).subscribe((response) => {
-        console.log(response);
-        this.activeModal.close('Close click');
-      });
-    }
 
-    
-    
+    this.activeModal.close(language);
   }
 
 }

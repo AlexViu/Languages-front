@@ -31,23 +31,42 @@ export class TableLanguageComponent implements OnInit {
   displayedColumns = ['id', 'name', 'langKey', 'actions'];
 
   ngOnInit() {
-    this.languageService.getLanguages().subscribe((languages: TableLanguageItem[]) => {
-      this.dataSource = new TableLanguageDataSource(languages);
-      this.loadDataTable();
-    }); 
+    this.loadDataTable();
   }
 
   edit(language: TableLanguageItem) {
     // this.modalLanguage.edit();
     const modalRef = this.modalService.open(ModalLanguageComponent);
-    modalRef.componentInstance.name = language.name;
-    modalRef.componentInstance.key = language.langKey;
-    modalRef.componentInstance.languageId = language.id;
+    modalRef.componentInstance.initModal(language);
+    modalRef.result.then((result) => {
+      this.languageService.editLanguage(result).subscribe(() => {
+        this.loadDataTable();
+      });
+    });
+  }
+
+  create() {
+    const modalRef = this.modalService.open(ModalLanguageComponent);
+    modalRef.result.then((result) => {
+      this.languageService.addLanguage(result).subscribe(() => {
+        this.loadDataTable();
+      });
+    });
+  }
+
+  delete(language: TableLanguageItem) {
+    this.languageService.deleteLanguage(language.id).subscribe((response) => {
+      this.loadDataTable();
+    });
   }
 
   loadDataTable() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.languageService.getLanguages().subscribe((languages: TableLanguageItem[]) => {
+      this.dataSource = new TableLanguageDataSource(languages);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
+    }); 
+    
   }
 }
