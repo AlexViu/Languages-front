@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalLanguageComponent } from './modal-language/modal-language.component';
+import { TableLanguageItem } from './table-language/table-language-datasource';
 
 @Component({
   selector: 'app-language',
@@ -16,7 +17,7 @@ export class LanguageComponent implements OnInit {
   }
 
   open() {
+    
     const modalRef = this.modalService.open(ModalLanguageComponent);
   }
-
 }

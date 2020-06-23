@@ -8,7 +8,8 @@ import { LanguageService } from 'app/services/language.service';
 // TODO: Replace this with your own data model type
 export interface TableLanguageItem {
   name: string;
-  id: number;
+  id?: number;
+  langKey: string;
 }
 
 /**
@@ -75,6 +76,7 @@ export class TableLanguageDataSource extends DataSource<TableLanguageItem> {
       switch (this.sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'langKey': return compare(+a.langKey, +b.langKey, isAsc);
         default: return 0;
       }
     });
