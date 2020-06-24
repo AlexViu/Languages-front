@@ -7,6 +7,7 @@ import { LanguageService } from 'app/services/language.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { LanguageComponent } from '../language.component';
 import { ModalLanguageComponent } from '../modal-language/modal-language.component';
+import { ModalConfirmComponent } from 'app/pages/modal-confirm/modal-confirm.component';
 
 @Component({
   selector: 'table-language',
@@ -35,7 +36,6 @@ export class TableLanguageComponent implements OnInit {
   }
 
   edit(language: TableLanguageItem) {
-    // this.modalLanguage.edit();
     const modalRef = this.modalService.open(ModalLanguageComponent);
     modalRef.componentInstance.initModal(language);
     modalRef.result.then((result) => {
@@ -52,11 +52,20 @@ export class TableLanguageComponent implements OnInit {
         this.loadDataTable();
       });
     });
+    console.log("Sale");
   }
 
   delete(language: TableLanguageItem) {
-    this.languageService.deleteLanguage(language.id).subscribe((response) => {
-      this.loadDataTable();
+    const modalRef = this.modalService.open(ModalConfirmComponent);
+    modalRef.componentInstance.initModal(`¿Deseas eliminar el idioma ${language.name}?`);
+    modalRef.result.then((response) => {
+      if(response) {
+        this.languageService.deleteLanguage(language.id).subscribe((response) => {
+          if(response) {
+            this.loadDataTable();
+          }
+        });
+      }
     });
   }
 
@@ -67,6 +76,5 @@ export class TableLanguageComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
     }); 
-    
   }
 }

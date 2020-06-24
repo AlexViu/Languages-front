@@ -26,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { TableLanguageComponent } from './pages/language/table-language/table-language.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ModalConfirmComponent } from './pages/modal-confirm/modal-confirm.component';
 
  
 @NgModule({
@@ -39,6 +40,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ModalContainerComponent,
     ModalTranslateComponent,
     TableLanguageComponent,
+    ModalConfirmComponent,
   ],
   imports: [
     BrowserAnimationsModule,

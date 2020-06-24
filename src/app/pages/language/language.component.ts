@@ -11,8 +11,8 @@ import { TableLanguageItem } from './table-language/table-language-datasource';
 
 export class LanguageComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
-
+  constructor() { }
+  
   ngOnInit(): void {
   }
 }

@@ -1,5 +1,6 @@
-<div class="modal-header">
-    <h5 class="modal-title">Idioma</h5>
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Idioma</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -17,8 +18,10 @@
         <label for="key">Clave:</label>
         <input [(ngModel)]="key" type="text" class="form-control" placeholder="Clave">
       </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark btn-round" (click)="activeModal.close('Close click')">Cerrar</button>
     <button type="button" class="btn btn-primary btn-round" (click)="save()">Guardar</button>
   </div>
+</div>
