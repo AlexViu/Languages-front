@@ -52,7 +52,6 @@ export class TableLanguageComponent implements OnInit {
         this.loadDataTable();
       });
     });
-    console.log("Sale");
   }
 
   delete(language: TableLanguageItem) {

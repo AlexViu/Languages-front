@@ -10,8 +10,8 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
     { path: '/translate',     title: 'Traducciones',      icon:'nc-world-2',    class: '' },
-    { path: '/container',     title: 'Contenedores',      icon:'nc-world-2',    class: '' },
-    { path: '/language',      title: 'Idiomas',           icon:'nc-world-2',    class: '' },
+    { path: '/container',     title: 'Contenedores',      icon:'nc-box-2',    class: '' },
+    { path: '/language',      title: 'Idiomas',           icon:'nc-caps-small',    class: '' },
     { path: '/icons',         title: 'Icons',             icon:'nc-diamond',    class: '' },
 ];
 
