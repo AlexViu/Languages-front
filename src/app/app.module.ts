@@ -28,6 +28,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ModalConfirmComponent } from './pages/modal-confirm/modal-confirm.component';
 import { TableContainerComponent } from './pages/container/table-container/table-container.component';
+import { TableTranslateComponent } from './pages/translate/table-translate/table-translate.component';
 
  
 @NgModule({
@@ -43,6 +44,7 @@ import { TableContainerComponent } from './pages/container/table-container/table
     TableLanguageComponent,
     ModalConfirmComponent,
     TableContainerComponent,
+    TableTranslateComponent,
   ],
   imports: [
     BrowserAnimationsModule,
