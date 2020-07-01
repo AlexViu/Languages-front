@@ -12,6 +12,8 @@ export class TranslateComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+
+    
   }
 
   open() {

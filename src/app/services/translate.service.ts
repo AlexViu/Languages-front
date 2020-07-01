@@ -19,7 +19,13 @@ export class TranslateService {
     );
   }
 
-
+  addTranslate(translate:any): Observable<any> {
+    console.log(JSON.stringify(translate));
+    return this.http.post<any>(`${AppSettings.API_URL}translation`, JSON.stringify(translate), AppSettings.httpOptions, )
+      .pipe(
+        catchError(this.handleError('addHero', name))
+      );
+  }
 
 
   /**

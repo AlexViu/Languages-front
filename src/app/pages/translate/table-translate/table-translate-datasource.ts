@@ -5,11 +5,13 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { TranslateService } from 'app/services/translate.service';
 import { LanguageService } from 'app/services/language.service';
+import { TranslateItem } from '../modal-translate/modal-translate.component';
 
 // TODO: Replace this with your own data model type
 export interface TableTranslateItem {
   transKey: string;
-  translate: string;
+  containerId: number;
+  translates: [];
 }
 
 // TODO: replace this with real data from your application

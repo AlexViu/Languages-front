@@ -5,9 +5,10 @@ import { MatTable } from '@angular/material/table';
 import { TableTranslateDataSource, TableTranslateItem } from './table-translate-datasource';
 import { TranslateService } from 'app/services/translate.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalTranslateComponent } from '../modal-translate/modal-translate.component';
+import { ModalTranslateComponent, TranslateItem } from '../modal-translate/modal-translate.component';
 import { TranslateComponent } from '../translate.component';
 import { LanguageService } from 'app/services/language.service';
+import { ContainerService } from 'app/services/container.service';
 
 @Component({
   selector: 'table-translate',
@@ -21,14 +22,20 @@ export class TableTranslateComponent implements OnInit {
  
   dataSource: TableTranslateDataSource;
 
-  constructor(private translateService: TranslateService, private modalService: NgbModal, private languageService: LanguageService) {
+  constructor(private translateService: TranslateService, private modalService: NgbModal, private languageService: LanguageService, private containerService: ContainerService) {
   }
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['container', 'transKey'];
   public listLanguages = [];
+  public listContainer = [];
+  public transKey = "";
 
   ngOnInit() {
+    this.containerService.getContainer().subscribe((response) => {
+      this.listContainer = response;
+    });
+
     this.languageService.getLanguages().subscribe((response) => {
       this.listLanguages = response;
       this.listLanguages.forEach(language => {
@@ -37,6 +44,23 @@ export class TableTranslateComponent implements OnInit {
       this.displayedColumns.push('actions');
       this.loadDataTable();
     });
+  }
+
+  create() {
+    const modalRef = this.modalService.open(ModalTranslateComponent,{ size: 'xl' });
+
+    modalRef.componentInstance.initModal(this.listLanguages, this.listContainer, []);
+    modalRef.result.then((result) => {
+      console.log(result);
+      this.translateService.addTranslate(result).subscribe(() => {
+        this.loadDataTable();
+      });
+
+    });
+  }
+
+  save() {
+    console.log(this.transKey);
   }
 
   loadDataTable() {

@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <button class="btn btn-outline-primary btn-round float-right" (click)="open()">Crear traducción</button>
+    <button class="btn btn-outline-primary btn-round float-right" (click)="create()">Crear traducción</button>
   </div>
   <div class="col-md-12">
     <div class="mat-elevation-z8">
@@ -20,11 +20,10 @@
         </ng-container>
 
        
-        
-       
-        <ng-container *ngFor="let language of listLanguages; index as i" matColumnDef="{{language.langKey}}">
+      
+        <ng-container *ngFor="let language of listLanguages" matColumnDef="{{language.langKey}}">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{language.name}}</th>
-          <td mat-cell *matCellDef="let row">{{row.translate[language.id].value}}</td>
+          <td mat-cell *matCellDef="let row">{{row.translate[language.langKey].value}}</td>
         </ng-container>
 
         
