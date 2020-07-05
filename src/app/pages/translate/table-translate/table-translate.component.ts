@@ -84,6 +84,10 @@ export class TableTranslateComponent implements OnInit {
     });
   }
 
+  download() {
+    this.translateService.download();
+  }
+
   save() {
     console.log(this.transKey);
   }

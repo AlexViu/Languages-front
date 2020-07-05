@@ -41,6 +41,19 @@ export class TranslateService {
       );
   }
 
+  autoTranslate(translate:any): Observable<any> {
+    return this.http.post<any>(`${AppSettings.API_URL}autoTranslate`, translate, AppSettings.httpOptions, )
+      .pipe(
+        catchError(this.handleError('addHero', name))
+      );
+  }
+
+  download() : Observable<any> {
+    return this.http.get<any>(`${AppSettings.API_URL}download`)
+    .pipe(
+      catchError(this.handleError<any>('getHeroes', []))
+    );
+  }
   /**
    * Handle Http operation that failed.
    * Let the app continue.
