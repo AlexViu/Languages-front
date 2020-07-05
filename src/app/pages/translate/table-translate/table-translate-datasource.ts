@@ -11,7 +11,8 @@ import { TranslateItem } from '../modal-translate/modal-translate.component';
 export interface TableTranslateItem {
   transKey: string;
   containerId: number;
-  translates: [];
+  container: String;
+  translate: any;
 }
 
 // TODO: replace this with real data from your application

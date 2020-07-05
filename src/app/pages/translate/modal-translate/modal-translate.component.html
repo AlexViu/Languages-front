@@ -19,7 +19,7 @@
           <div class="form-group">
             <label>Contenedor:</label>
             <select [(ngModel)]="containerId" class="form-control">
-              <option value="">Sin contenedor</option>
+              <option value="null">Sin contenedor</option>
               <option *ngFor="let container of listContainer" value="{{container.id}}">{{container.name}}</option>
             </select>
           </div>

@@ -21,12 +21,25 @@ export class TranslateService {
 
   addTranslate(translate:any): Observable<any> {
     console.log(JSON.stringify(translate));
-    return this.http.post<any>(`${AppSettings.API_URL}translation`, JSON.stringify(translate), AppSettings.httpOptions, )
+    return this.http.post<any>(`${AppSettings.API_URL}translation`, translate, AppSettings.httpOptions, )
       .pipe(
         catchError(this.handleError('addHero', name))
       );
   }
 
+  editTranslate(translate:any): Observable<any> {
+    return this.http.put<any>(`${AppSettings.API_URL}translation`, translate, AppSettings.httpOptions )
+      .pipe(
+        catchError(this.handleError('addHero', name))
+      );
+  }
+
+  deleteTranslate(translate:any): Observable<any> {
+    return this.http.put<any>(`${AppSettings.API_URL}deleteTranslation`, translate, AppSettings.httpOptions)
+      .pipe(
+        catchError(this.handleError('addHero', name))
+      );
+  }
 
   /**
    * Handle Http operation that failed.

@@ -9,6 +9,7 @@ import { ModalTranslateComponent, TranslateItem } from '../modal-translate/modal
 import { TranslateComponent } from '../translate.component';
 import { LanguageService } from 'app/services/language.service';
 import { ContainerService } from 'app/services/container.service';
+import { ModalConfirmComponent } from 'app/pages/modal-confirm/modal-confirm.component';
 
 @Component({
   selector: 'table-translate',
@@ -51,11 +52,35 @@ export class TableTranslateComponent implements OnInit {
 
     modalRef.componentInstance.initModal(this.listLanguages, this.listContainer, []);
     modalRef.result.then((result) => {
-      console.log(result);
       this.translateService.addTranslate(result).subscribe(() => {
         this.loadDataTable();
       });
 
+    });
+  }
+
+  edit(translate: TableTranslateItem) {
+    const modalRef = this.modalService.open(ModalTranslateComponent, { size: 'xl' });
+    modalRef.componentInstance.initModal(this.listLanguages, this.listContainer, translate);
+    
+    modalRef.result.then((result) => {
+      this.translateService.editTranslate(result).subscribe(() => {
+        this.loadDataTable();
+      });
+    });
+  }
+
+  delete(translate: TableTranslateItem) {
+    const modalRef = this.modalService.open(ModalConfirmComponent);
+    modalRef.componentInstance.initModal(`¿Deseas eliminar la traduccion de ${translate.transKey}?`);
+    modalRef.result.then((response) => {
+      if(response) {
+        this.translateService.deleteTranslate(translate).subscribe((response) => {
+          if(response) {
+            this.loadDataTable();
+          }
+        });
+      }
     });
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TableTranslateItem } from '../table-translate/table-translate-datasource';
 
 export interface TranslateItem {
   id?: number;
@@ -18,7 +19,7 @@ export class ModalTranslateComponent implements OnInit {
   public listLanguages = [];
   public listContainer = [];
   public transKey = "";
-  public containerId: number = null;
+  public containerId: number;
   public translates = [];
   
 
@@ -27,11 +28,13 @@ export class ModalTranslateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public initModal(listLanguages: [], listContainer: [], translates:[]) {
+  public initModal(listLanguages: [], listContainer: [], translates: TableTranslateItem) {
     this.listLanguages = listLanguages;
     this.listContainer = listContainer;
+    this.transKey = translates.transKey;
+    this.containerId = (translates.containerId) ? translates.containerId : null;
 
-    if(translates.length == 0) {
+    if(translates.translate == undefined) {
       this.listLanguages.forEach((language) => {
         var translate : TranslateItem = {
           id: null,
@@ -41,7 +44,7 @@ export class ModalTranslateComponent implements OnInit {
         this.translates[language.langKey] = translate;
       });
     } else {
-      this.translates = translates;
+      this.translates = translates.translate;
     }
   }
 
@@ -52,7 +55,6 @@ export class ModalTranslateComponent implements OnInit {
     this.listLanguages.forEach((language) => {
       arrayTranslate.push(this.translates[language.langKey]);
     });
-      
 
     result = {
       transKey : this.transKey,
