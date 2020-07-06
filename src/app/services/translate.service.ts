@@ -49,6 +49,8 @@ export class TranslateService {
   }
 
   download() : Observable<any> {
+    console.log(`${AppSettings.API_URL}download`);
+
     return this.http.get<any>(`${AppSettings.API_URL}download`)
     .pipe(
       catchError(this.handleError<any>('getHeroes', []))
