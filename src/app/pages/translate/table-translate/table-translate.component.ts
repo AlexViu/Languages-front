@@ -10,6 +10,8 @@ import { TranslateComponent } from '../translate.component';
 import { LanguageService } from 'app/services/language.service';
 import { ContainerService } from 'app/services/container.service';
 import { ModalConfirmComponent } from 'app/pages/modal-confirm/modal-confirm.component';
+import {Location} from '@angular/common';
+import { AppSettings } from 'app/constants';
 
 @Component({
   selector: 'table-translate',
@@ -23,7 +25,7 @@ export class TableTranslateComponent implements OnInit {
  
   dataSource: TableTranslateDataSource;
 
-  constructor(private translateService: TranslateService, private modalService: NgbModal, private languageService: LanguageService, private containerService: ContainerService) {
+  constructor(private translateService: TranslateService, private modalService: NgbModal, private languageService: LanguageService, private containerService: ContainerService, private location: Location) {
   }
   
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -31,6 +33,8 @@ export class TableTranslateComponent implements OnInit {
   public listLanguages = [];
   public listContainer = [];
   public transKey = "";
+  public translateLabel = "Generar Zip de traducciones";
+  public downloadLink  = "";
 
   ngOnInit() {
     this.containerService.getContainer().subscribe((response) => {
@@ -85,7 +89,10 @@ export class TableTranslateComponent implements OnInit {
   }
 
   download() {
-    this.translateService.download();
+    this.translateService.download().subscribe((response) => {
+        this.translateLabel = "Descargar zip";
+        this.downloadLink = `${AppSettings.BASE_URL}${response.url}`;
+    });
   }
 
   save() {

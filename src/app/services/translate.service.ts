@@ -42,7 +42,7 @@ export class TranslateService {
   }
 
   autoTranslate(translate:any): Observable<any> {
-    return this.http.post<any>(`${AppSettings.API_URL}autoTranslate`, translate, AppSettings.httpOptions, )
+    return this.http.post<any>(`${AppSettings.API_URL}autoTranslate`, translate, AppSettings.httpOptions )
       .pipe(
         catchError(this.handleError('addHero', name))
       );
