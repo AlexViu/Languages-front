@@ -1,8 +1,10 @@
-
 <div class="row">
   <div class="col-md-12">
     <button *ngIf="!downloadLink" class="btn btn-outline-primary btn-round float-left" (click)="download()">{{translateLabel}}</button>
     <a *ngIf="downloadLink" href="{{downloadLink}}" class="btn btn-outline-primary btn-round float-left" (click)="download()">{{translateLabel}}</a>
+    
+    
+    
     <button class="btn btn-outline-primary btn-round float-right" (click)="create()">Crear traducción</button>
   </div>
   <div class="col-md-12">
@@ -41,7 +43,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-  
       <mat-paginator #paginator
           [length]="dataSource?.data.length"
           [pageIndex]="0"

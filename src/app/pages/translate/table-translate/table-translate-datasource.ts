@@ -7,6 +7,7 @@ import { TranslateService } from 'app/services/translate.service';
 import { LanguageService } from 'app/services/language.service';
 import { TranslateItem } from '../modal-translate/modal-translate.component';
 
+
 // TODO: Replace this with your own data model type
 export interface TableTranslateItem {
   transKey: string;
@@ -26,6 +27,7 @@ export class TableTranslateDataSource extends DataSource<TableTranslateItem> {
   data: TableTranslateItem[] = [];
   paginator: MatPaginator;
   sort: MatSort;
+
 
   constructor(data: TableTranslateItem[]) {
     super();
@@ -50,6 +52,7 @@ export class TableTranslateDataSource extends DataSource<TableTranslateItem> {
       return this.getPagedData(this.getSortedData([...this.data]));
     }));
   }
+
 
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
@@ -78,7 +81,8 @@ export class TableTranslateDataSource extends DataSource<TableTranslateItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        //case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'transKey': return compare(+a.transKey, +b.transKey, isAsc);
+        case 'container': return compare(+a.container, +b.container, isAsc);
         default: return 0;
       }
     });

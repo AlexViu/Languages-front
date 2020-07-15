@@ -12,6 +12,8 @@ import { ContainerService } from 'app/services/container.service';
 import { ModalConfirmComponent } from 'app/pages/modal-confirm/modal-confirm.component';
 import {Location} from '@angular/common';
 import { AppSettings } from 'app/constants';
+import { MatInputModule } from '@angular/material/input';
+
 
 @Component({
   selector: 'table-translate',
@@ -49,6 +51,7 @@ export class TableTranslateComponent implements OnInit {
       this.displayedColumns.push('actions');
       this.loadDataTable();
     });
+
   }
 
   create() {
@@ -98,7 +101,7 @@ export class TableTranslateComponent implements OnInit {
   save() {
     console.log(this.transKey);
   }
-
+  
   loadDataTable() {
     this.translateService.getTranslates().subscribe((translate: TableTranslateItem[]) => {
       this.dataSource = new TableTranslateDataSource(translate);

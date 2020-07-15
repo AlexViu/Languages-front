@@ -62,7 +62,7 @@ import { TableTranslateComponent } from './pages/translate/table-translate/table
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
